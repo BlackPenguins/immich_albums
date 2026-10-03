@@ -54,7 +54,7 @@ app.get('/api/public-albums', async (req, res) => {
                     sharedAt: link.createdAt,
                     takenAt: albumData.endDate,
                     shareUrl: `${IMMICH_SERVER_URL}/share/${link.key}`,
-                    coverUrl: coverId ? `http://localhost:${PORT}/api/thumbnail/${coverId}` : null
+                    coverUrl: coverId ? `http://albums.penguinore.net:${PORT}/api/thumbnail/${coverId}` : null
                 };
             })
             .sort((a, b) => new Date(b.sharedAt) - new Date(a.sharedAt)) // Sort newest first
