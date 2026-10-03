@@ -9,7 +9,7 @@ const App = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:15000/api/public-albums`)
+        fetch(`http://penguinore.net:15000/api/public-albums`)
         .then(res => {
             if (!res.ok) throw new Error('Failed to fetch from backend');
             return res.json();
