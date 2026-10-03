@@ -1,14 +1,14 @@
 services:
-  frontend:
+  immich-albums-frontend:
     build: ./frontend
     container_name: immich-albums-frontend
     ports:
       - "15100:15100"
     depends_on:
-      - backend
+      - immich-albums-backend
     restart: unless-stopped
 
-  backend:
+  immich-albums-backend:
     build: ./backend
     container_name: immich-albums-backend
     ports:

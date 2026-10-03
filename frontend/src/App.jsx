@@ -4,14 +4,12 @@ import './App.css';
 
 const App = () => {
 
-    const PORT = 15000;
-
     const [albums, setAlbums] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://albums.penguinore.net:${PORT}/api/public-albums`)
+        fetch(`http://localhost:15000/api/public-albums`)
         .then(res => {
             if (!res.ok) throw new Error('Failed to fetch from backend');
             return res.json();
@@ -28,7 +26,10 @@ const App = () => {
 
     if (loading) return <div className='loading'>Loading albums...</div>;
 
-    if (error) return <div className='error'>Error</div>;
+    if (error) {
+        console.log("ERR", error);
+        return <div className='error'>Error</div>;
+    }
 
     // Helper function to group albums by formatted share date string (e.g., "October 2, 2026")
     const groupAlbumsByDate = (albumList) => {
