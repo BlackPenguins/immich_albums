@@ -27,7 +27,7 @@ const App = () => {
     if (loading) return <div className='loading'>Loading albums...</div>;
 
     if (error) {
-        console.log("ERR", error);
+        console.log("Error", error);
         return <div className='error'>Error</div>;
     }
 
@@ -49,8 +49,6 @@ const App = () => {
     };
 
     const groupedAlbums = groupAlbumsByDate(albums);
-
-    console.log("GROUP", groupedAlbums)
 
     return (
         <div className='page'>

@@ -16,6 +16,7 @@ const IMMICH_API_KEY = process.env.API_KEY;
 
 // 1. Endpoint to get all public albums and their mapped info
 app.get('/api/public-albums', async (req, res) => {
+    console.log(`Incoming request at ${new Date()}`);
     try {
         const headers = {
         'x-api-key': IMMICH_API_KEY,
@@ -45,7 +46,6 @@ app.get('/api/public-albums', async (req, res) => {
                 const albumData = albumMap.get(link.album.id) || link.album;
                 const coverId = albumData.albumThumbnailAssetId || (albumData.assets && albumData.assets[0]?.id);
 
-                console.log("DAT", albumData)
                 return {
                     id: link.id,
                     albumId: link.album.id, // Track the unique album ID
@@ -65,7 +65,6 @@ app.get('/api/public-albums', async (req, res) => {
                 return true;
             });
 
-            console.log("GO", publicAlbums)
         res.json(publicAlbums);
     } catch (error) {
         console.error('Error fetching public albums:', error);
